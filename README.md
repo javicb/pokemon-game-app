@@ -11,7 +11,7 @@ This application made in Vue simulates the game of guessing which Pokemon appear
 First clone the project:
 
 ```
-npm install
+git clone https://github.com/javicb/pokemon-game-app.git
 ```
 
 Then navigate to its directory and install dependencies
