@@ -1,27 +1,29 @@
-import pokemonAPI from "../api/pokemonAPI"
+import pokemonAPI from "@/api/pokemonAPI";
 
-// Creamos el array
+// Create array
 const getPokemons = () => {
-  const pokemons = Array.from(Array(650))
-  return pokemons.map((_, index) => index + 1)
-
+  const pokemonArr = Array.from(Array(650));
+  return pokemonArr.map((_, index) => ({
+    value: index + 1,
+    label: `#${index + 1}`,
+  }));
 }
 
-// Mezclamos el array de pokemon
+// We mix the array of pokemon
 const getPokemonOptions = async () => {
-  const mixedPokemon = getPokemons().sort(() => Math.random() - 0.5)
-  const pokemons = await getPokemonName(mixedPokemon.splice(0, 4))
-  return pokemons
+  const mixedPokemons = getPokemons().sort(() => 0.5 - Math.random());
+  const pokemons = await getPokemonName(mixedPokemons.splice(0, 4));
+  return pokemons;
 }
 
-// Obtenemos el nombre del pokemon
+// Get pokemon name
 const getPokemonName = async ([a, b, c, d] = []) => {
 
   const promise = [
-    pokemonAPI.get(`/${a}`),
-    pokemonAPI.get(`/${b}`),
-    pokemonAPI.get(`/${c}`),
-    pokemonAPI.get(`/${d}`),
+    pokemonAPI.get(`/${a.value}`),
+    pokemonAPI.get(`/${b.value}`),
+    pokemonAPI.get(`/${c.value}`),
+    pokemonAPI.get(`/${d.value}`),
   ]
 
   const [poke1, poke2, poke3, poke4] = await Promise.all(promise)
@@ -32,9 +34,7 @@ const getPokemonName = async ([a, b, c, d] = []) => {
     { name: poke3.data.name, id: poke3.data.id },
     { name: poke4.data.name, id: poke4.data.id }
   ]
-
-
 }
 
 
-export default getPokemonOptions
+export default getPokemonOptions;

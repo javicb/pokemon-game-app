@@ -1,15 +1,8 @@
 <template>
-  <div class="pokemon-container">
-    <img id="pokemon-oculto"
-         class="hidden-pokemon"
-         :src="imgSrc"
-         alt="img-pokemon">
-    <img id="pokemon"
-         :src="imgSrc"
-         class="fade-in"
-         alt="img-pokemon"
-         v-if="showPokemon">
-  </div>
+    <div class="pokemon-container">
+        <img id="hidden-pokemon" class="hidden-pokemon" alt="img-pokemon" :src="imgSrc">
+        <img id="pokemon" class="fade-in" alt="img-pokemon" :src="imgSrc" v-if="showPokemon">
+    </div>
 </template>
 
 <script>
@@ -36,26 +29,26 @@ export default {
 </script>
 
 <style scoped>
-
 .pokemon-container {
-    height: 200px;
     display: flex;
+    height: 200px;
     justify-content: center;
 }
 
 img {
-    width: 50%;
-    user-select: none;
-    position: absolute;
-    margin-right: auto;
-    margin-left: auto;
-    height: 21%;
-    display: block;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    -ms-user-select: none;
     -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    display: block;
+    height: 21%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    user-select: none;
+    width: 50%;
 }
+
 .hidden-pokemon {
     filter: brightness(0);
 }
