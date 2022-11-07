@@ -71,4 +71,54 @@ describe('PokemonPage Component', () => {
     expect(options.attributes('pokemons')).toBeTruthy();
   });
 
+  test('should return "Correcto" if the selection is correct', () => {
+
+    // Arrange
+    const wrapper = shallowMount(PokemonPage, {
+      data() {
+        return {
+          pokemonArr: pokemons,
+          pokemon: pokemons[0],
+          showPokemon: true,
+          showAnswer: false,
+          message: ''
+        }
+      }
+    });
+    const message = `Correcto... es ${pokemons[0].name}!!!`;
+
+    // Act
+    wrapper.vm.checkAnswer(1);
+
+    // Assert
+    expect(wrapper.vm.showAnswer).toBeTruthy();
+    expect(wrapper.vm.showPokemon).toBeTruthy();
+    expect(wrapper.vm.message).toBe(message);
+  });
+
+  test('should return "Incorrecto" if the selection is incorrect', () => {
+
+    // Arrange
+    const wrapper = shallowMount(PokemonPage, {
+      data() {
+        return {
+          pokemonArr: pokemons,
+          pokemon: pokemons[0],
+          showPokemon: true,
+          showAnswer: false,
+          message: ''
+        }
+      }
+    });
+    const message = `Incorrecto... es ${pokemons[0].name}!!!`;
+
+    // Act
+    wrapper.vm.checkAnswer(2);
+
+    // Assert
+    expect(wrapper.vm.showAnswer).toBeTruthy();
+    expect(wrapper.vm.showPokemon).toBeTruthy();
+    expect(wrapper.vm.message).not.toBe(message);
+  });
+
 })
