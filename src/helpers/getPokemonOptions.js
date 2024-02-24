@@ -2,7 +2,7 @@ import pokemonAPI from "@/api/pokemonAPI";
 
 // Create array
 export const getPokemons = () => {
-  const pokemonArr = Array.from(Array(905));
+  const pokemonArr = Array.from(Array(1025));
   return pokemonArr.map((_, index) => ({
     value: index + 1,
     label: `#${index + 1}`,
