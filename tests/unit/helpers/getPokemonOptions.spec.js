@@ -8,7 +8,7 @@ describe('getPokemonOptions helper', () => {
     const pokemons = await getPokemons();
 
     // Assert
-    expect(pokemons.length).toBe(905);
+    expect(pokemons.length).toBe(1025);
   });
 
   test('should return an array of four numbers whit pokemon names', async () => {
